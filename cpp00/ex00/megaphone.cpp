@@ -21,7 +21,9 @@ int main(int argc, char **argv)
     else
     {
 	    for (int i = 1; i < argc; i++)
+		{
 		    str += ft_to_upper(argv[i]);
+		}
 	    std::cout << str << std::endl;
     }
 }

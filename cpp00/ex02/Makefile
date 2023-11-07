@@ -11,16 +11,16 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	echo "created account"
+	echo "created $(NAME)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 		rm -f $(OBJ)
-		echo "obj account"
+		echo "obj deleted"
 
 fclean: clean
 		rm -f $(NAME)
-		echo "account deleted"
+		echo " $(NAME) deleted"
 
 re: fclean all
 

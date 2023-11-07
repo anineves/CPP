@@ -44,9 +44,15 @@ void PhoneBook::addContact(void)
 void PhoneBook::display(void)
 {
 	std::string data;
+	int maxId;
 
 	std::cout << "     Index|First Name| Last Name|  Nickname|" << std::endl;
-	for (int j = 0; j < this->i; j++)
+
+	if(this->i > 7 )
+		maxId = 7;
+	else
+		maxId = this->i - 1;
+	for (int j = 0; j <= maxId; j++)
 	{
 		std::cout << std::setw(10) << j  << "|";
 		data = this->contacts[j].getFirstName() ;
@@ -56,37 +62,36 @@ void PhoneBook::display(void)
 		data = this->contacts[j].getNickName();
 		std::cout << std::setw(10) <<Contact::format(data) << "|" << std::endl;
 	}
+	
 }
 
 void PhoneBook::searchContact(void)
 {
+	
+
 	int	id;
 	int	maxId;
 
 	if(this->i > 0)
 	{
 		if(this->i > 7 )
-		{
 			maxId = 7;
-		}
 		else
-		{
 			maxId = this->i - 1;
-		}
 		this->display();
 		std::cout << "\nChoose ID, to display the contact information > ";
 		std::cin >> id;
-		if (std::cin.fail() || id > 7 || id < 0)
+		if ( std::cin.fail() || id > 7 || id < 0 )
 		{
 			std::cout << "\n   Invalid input, please choose a valid  input\n" << std::endl;
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
-			PhoneBook::searchContact();
+		
 		}
 		else if ( id < 0 || id > maxId )
 		{
 			std::cout << "\n \n   Contact " << id <<  " has not yet been filled  please choose a valid contact \n" << std::endl;
-			PhoneBook::searchContact();
+			std::cin.ignore(1000, '\n');
 		}
 		else
 		{
