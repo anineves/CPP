@@ -15,7 +15,7 @@ class Fixed
         //copy constructor
         Fixed(Fixed &source);
         //operator overload
-        Fixed& operator= (Fixed &src);
+        Fixed &operator=(Fixed &rhs);
         //destructor
         ~Fixed();
         //member function

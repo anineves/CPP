@@ -15,10 +15,12 @@ class Fixed
     public:
         //constructor 
         Fixed();
-        Fixed(const int f);
+        Fixed(const int i);
         Fixed(const float f);
         //copy constructor
         Fixed(Fixed const &source);
+        //operator overload
+        Fixed &operator= (Fixed const &rhs);
         //destructor
         ~Fixed();
         //member function
@@ -26,10 +28,9 @@ class Fixed
         void setRawBits(int const raw);
         float toFloat( void ) const;
         int toInt( void ) const;
-        //operator overload
-        Fixed& operator= (Fixed const &src);
+        
 };
 
 
-std::ostream& operator<<(std::ostream& out, const Fixed& in);
+std::ostream &operator<< (std::ostream &lhs, const Fixed &rhs);
 #endif

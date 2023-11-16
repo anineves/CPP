@@ -6,7 +6,7 @@ Fixed::Fixed()
     this->fix = 0;
 }
 
-Fixed::Fixed(const int f) : fix( f << fract)
+Fixed::Fixed(const int i) : fix( i << fract)
 {
     std::cout << "Int constructor called" << std::endl;
 }
@@ -22,11 +22,11 @@ Fixed::Fixed(Fixed const &source)
     *this = source;
 }
 
-Fixed& Fixed::operator = (const Fixed &src)
+Fixed& Fixed::operator= (const Fixed &rhs)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &src)
-        this->fix = src.getRawBits();
+    if (this != &rhs)
+        this->fix = rhs.getRawBits();
     return (*this);
 }
 
@@ -53,7 +53,7 @@ int     Fixed::toInt( void ) const {
     return this->fix >> fract;
 }
 
-std::ostream & operator<<( std::ostream & out, Fixed const & in ) {
-    out << in.toFloat();
-    return out;
+std::ostream &operator<< (std::ostream &lhs, Fixed const &rhs) {
+    lhs << rhs.toFloat();
+    return lhs;
 }
