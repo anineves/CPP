@@ -2,24 +2,32 @@
 #include <fstream>
 #include <string>
 
-std::string replaceOccurrences(std::string content, const std::string s1, const std::string s2) 
+std::string ft_replace(std::string content, const std::string s1, const std::string s2) 
 {
-    if (s1.empty())
-        return (content);
-    size_t  index = content.find(s1);
-  
-    while(index != std::string::npos)
+
+    size_t index = 0;
+    std::string result;
+
+    while (index < content.length()) 
     {
-        content.erase(index, s1.size());
-        content.insert(index, s2);
-        index = content.find(s1);
+        size_t foundPos = content.find(s1, index);
+
+        if (foundPos == std::string::npos) {
+            result += content.substr(index);
+            break;
+        }
+        result += content.substr(index, foundPos - index);
+        result += s2;
+        index = foundPos + s1.length();
     }
-    return (content);
+
+    return result;
 }
 
 int main(int argc, char* argv[]) 
 {
-    if (argc != 4) {
+    if (argc != 4) 
+    {
         std::cerr << "Wrong Input, \n Please try again, with ./replace <filename> <s1> <s2>" << std::endl;
         return 1;
     }
@@ -41,7 +49,7 @@ int main(int argc, char* argv[])
     std::getline(ifs, result, '\0');
     ifs.close();
 
-    result = replaceOccurrences(result, s1, s2);
+    result = ft_replace(result, s1, s2);
 
     std::ofstream ofs(filename + ".replace");
 

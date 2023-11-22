@@ -11,7 +11,8 @@ int main(void)
 	std::cout << "The name of the stack zombie : " << std::endl;
     std::cin >> stack;
 
-    Zombie *zombie_heap = newZombie(heap);  zombie_heap->announce();
+    Zombie *zombie_heap = newZombie(heap); 
+    zombie_heap->announce();
 	delete zombie_heap;  
     
 	randomChump(stack);
