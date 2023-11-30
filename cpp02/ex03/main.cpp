@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main ( void ) {
-    if ( bsp( Point(0,0), Point(10,30), Point(20,0), Point(19 ,1) ) == true ) {
+    if ( bsp( Point(0,0), Point(10,30), Point(20,0), Point(15 ,14) ) == true ) {
         std::cout << "Point is in the triangle" << std::endl;
     } else {
         std::cout << "Point is not in the triangle" << std::endl;

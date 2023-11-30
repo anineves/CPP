@@ -21,7 +21,9 @@ Point &Point::operator=(const Point &rhs)
 	return (*this);
 }
 
-Point::~Point() {}
+Point::~Point() {
+	
+}
 
 float Point::getX( void ) const
 {

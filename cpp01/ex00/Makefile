@@ -1,6 +1,6 @@
 NAME = zombie
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CCXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 SRC = main.cpp \
@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	echo "created zombie"
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CCXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 		rm -f $(OBJ)

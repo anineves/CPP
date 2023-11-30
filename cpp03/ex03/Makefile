@@ -1,6 +1,6 @@
 NAME = DiamondTrap
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 SRC = main.cpp\
@@ -15,7 +15,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	echo "created $(NAME)"
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 		rm -f $(OBJ)

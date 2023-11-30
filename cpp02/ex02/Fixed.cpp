@@ -11,7 +11,7 @@ Fixed::Fixed(const int i) : fix( i << fract)
     //std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float f) : fix(std::roundf( f * (1 << fract)))
+Fixed::Fixed(const float f) : fix(roundf( f * (1 << fract)))
 {
     //std::cout << "Float constructor called" << std::endl;
 } 
