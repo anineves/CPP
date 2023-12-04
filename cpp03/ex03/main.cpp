@@ -1,23 +1,15 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 
-int main()
+#include "DiamondTrap.hpp"
+
+int main( void )
 {
-    ScavTrap scav("Ana");
-    ClapTrap clap("Neves");
-    FragTrap frag ("Isabel");
+    DiamondTrap diamond( "Ana" );
 
-    scav.attack("knife");
-    clap.attack("gun");
-    frag.attack("other");
-    clap.takeDamage(10);
-    scav.takeDamage(10);
-    frag.takeDamage(10);
-    clap.attack("gun");
-    scav.attack("gun");
-    frag.attack("other");
-    scav.guardGate();
-    frag.highFiveGuys();
+    diamond.whoAmI();
+
+    diamond.attack( "something");
+    diamond.takeDamage( 100 );
+    diamond.attack( "something");
+
     return 0;
 }

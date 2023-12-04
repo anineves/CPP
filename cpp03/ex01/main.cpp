@@ -7,13 +7,13 @@ int main()
     ScavTrap scav1("Isabel");
     ClapTrap clap("Neves");
 
-    scav.attack("knife");
-    scav1.attack("gun");
-    clap.attack("gun");
+    scav.attack("something");
+    scav1.attack("something");
+    clap.attack("something");
     clap.takeDamage(10);
     scav.takeDamage(10);
-    clap.attack("gun");
-    scav.attack("gun");
+    clap.attack("something");
+    scav.attack("something");
     scav.guardGate();
     return 0;
 }

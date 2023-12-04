@@ -4,18 +4,21 @@ int main()
 {
     ClapTrap clap("Ana");
     ClapTrap clap1("Isabel");
-	ClapTrap clap_op;
-    ClapTrap clap_copy(clap1);
 
 
-    clap.attack("knife");
+    clap.attack("something");
+    clap.attack("something");
+    clap.attack("something");
+    clap.takeDamage(10);
+    clap.takeDamage(9);
+    clap.attack("something");
+    clap.beRepaired(5);
+    clap.attack("something");
+    clap.attack("something");
+    clap.attack("something");
+    clap.attack("something");
+    clap.attack("something");
+    clap.attack("something");
     
-    clap_op = clap1;
-    clap1.attack("gun");
-    clap_op.attack("gun");
-    clap_copy.attack("gun");
-    clap1.takeDamage(10);
-    clap1.attack("gun");
-    clap_op.attack("gun");
     return 0;
 }
