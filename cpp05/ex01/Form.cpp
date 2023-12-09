@@ -1,11 +1,11 @@
 #include "Form.hpp"
 
-Form::Form() : name("default"), gradeSign(0), gradeExec(0)
+Form::Form() : name("default"), sign(false), gradeSign(0), gradeExec(0)
 {
     throw Form::GradeTooHighException();
 }
 
-Form::Form(const std::string &name, int gradeSign, int gradeExec) : name(name), gradeSign(gradeSign), gradeExec(gradeExec)
+Form::Form(const std::string &name, int gradeSign, int gradeExec) : name(name), sign(false), gradeSign(gradeSign), gradeExec(gradeExec)
 {
     if(gradeSign  < 1 || gradeExec < 1)
         throw Form::GradeTooHighException();
@@ -26,7 +26,6 @@ Form &Form::operator=(const Form &rhs)
     {
         this->sign = rhs.sign;
     }
-
     return *this;
 }
 
