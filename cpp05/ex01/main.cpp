@@ -127,12 +127,5 @@ std::cout << "--------------------------ERROR Form------------------------------
     }
 	return (0);
 
-    try {
-        Bureaucrat bur("John", 9);
-        Form form("TC39", 0, 0);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
     std::cout << std::endl;
 }
