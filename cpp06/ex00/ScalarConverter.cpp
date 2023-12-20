@@ -73,26 +73,20 @@ void ScalarConverter::convertToDouble(const std::string &str)
 
 void ScalarConverter::convertToChar (const std::string &str)
 {
-    char toChar = static_cast<char>(str[0]);
-    
-    if(pseudoliteral(str))
-    {
-            std::cout << "CHAR: impossivel convert, your input is a pseudo literal"<<std::endl;
-            return ;
-    }
+    float toChar = static_cast<float>(atof(str.c_str()));
 
-    if(str.size() != 1 || toChar < std::numeric_limits<char>::min() || toChar > std::numeric_limits<char>::max())
+    if(pseudoliteral(str)|| toChar< std::numeric_limits<char>::min() || toChar > std::numeric_limits<char>::max())
     {
-        std::cout << "CHAR: impossivel"<< std::endl;
+        std::cout << "CHAR: impossible"<< std::endl;
         return;
     }
     else if (!std::isprint(toChar))
     {
-        std::cout << "CHAR: non displayable character"<< std::endl;
+        std::cout << "CHAR: Non displayable"<< std::endl;
     }
     else
     {
-        std::cout << "CHAR: '" << toChar << "'" << std::endl;
+        std::cout << "CHAR: '" << static_cast<char>(toChar) << "'" << std::endl;
     }
   
 }
@@ -108,7 +102,7 @@ void ScalarConverter::convertToInt (const std::string &str)
 
         if(pseudoliteral(str))
         {
-            std::cout<<"INT: impossivel convert, your input is a pseudo literal"<<std::endl;
+            std::cout<<"INT: impossible"<<std::endl;
             return ;
         }
         if(toInt >std::numeric_limits<int>::max() || toInt < std::numeric_limits<int>::min())
