@@ -3,6 +3,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int	main()
 {
@@ -50,9 +51,10 @@ int	main()
     }
 
 std::cout << "--------------------------ERROR Form-----------------------------------------" <<std::endl;
-    try{
+    try
+    {
         Bureaucrat bureaucrat1("Ana", 9);
-        //Form form ("Form", 0, 0);
+        //AForm form ("Form", 0, 0);
         //bureaucrat1.signForm(form);
         std::cout << bureaucrat1 <<std::endl;
     }
@@ -60,45 +62,24 @@ std::cout << "--------------------------ERROR Form------------------------------
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }
-    
 
-    try{
-        Bureaucrat bureaucrat1("Ana", 2);
-        //Form form ("Form", 1, 1);
-        //form.beSigned(bureaucrat1);
-        std::cout << bureaucrat1 <<std::endl;
-    }
-    catch(std::exception &e)
+std::cout << "-----------------------No error-------------------------------------------------" <<std::endl;
+
+    try
     {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-
-    try{
-        Bureaucrat bureaucrat1("Ana", 1);
-        Bureaucrat bureaucrat2(bureaucrat1);
-        //Form form ("Form", 1, 2);
-        //form.beSigned(bureaucrat1);
-        std::cout << bureaucrat1;
-        bureaucrat2.setGrade(2);
-        //form.beSigned(bureaucrat2);
-        std::cout << bureaucrat2 <<std::endl;
-    }
-    catch(std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-    
-
-    std::cout << "-----------------------No error-------------------------------------------------" <<std::endl;
-
-    try{
-        Bureaucrat bureaucrat1("Ana", 1);
+        std::cout<< "teste 1" << std::endl;
+        Bureaucrat bureaucrat1("Ana", 100);
         ShrubberyCreationForm form("Home");
         RobotomyRequestForm  form2("Home");
         PresidentialPardonForm form3("Home");
         form.executeFormAction();
+        bureaucrat1.signForm(form);
+        std::cout << std::endl;
         form2.executeFormAction();
+        bureaucrat1.signForm(form2);
+        std::cout << std::endl;
         form3.executeFormAction();
+        bureaucrat1.signForm(form3);
         std::cout << bureaucrat1;
     }
     catch(std::exception &e)
@@ -107,36 +88,71 @@ std::cout << "--------------------------ERROR Form------------------------------
     }
     
 
-    try{
-        Bureaucrat bureaucrat2("Isabel", 150);
-        std::cout << bureaucrat2;
-    }
-    catch(std::exception &e)
+    try
     {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-	
-    try{
-        Bureaucrat bureaucrat3("Sousa", 3);
-        bureaucrat3.increment();
-        std::cout << bureaucrat3;
+        std::cout << std::endl;
+        std::cout << std::endl;
+        std::cout<< "teste 2" << std::endl;
+        Bureaucrat bureaucrat1("Ana", 4);
+        ShrubberyCreationForm form("Home");
+        RobotomyRequestForm  form2("Home");
+        PresidentialPardonForm form3("Home");
+        bureaucrat1.signForm(form);
+        form.execute(bureaucrat1);
+        std::cout << std::endl;
+        bureaucrat1.signForm(form2);
+        form2.execute(bureaucrat1);
+        std::cout << std::endl;
+        bureaucrat1.signForm(form3);
+        form3.execute(bureaucrat1);
+        std::cout << std::endl;
     }
     catch(std::exception &e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 
-    try{
-        Bureaucrat bureaucrat4("Neves", 149);
-        bureaucrat4.decrement();
-        std::cout << bureaucrat4;
+
+    try
+    {
+        std::cout << std::endl;
+        std::cout << std::endl;
+        std::cout<< "teste 3" << std::endl;
+        Bureaucrat bureaucrat1("Ana", 40);
+        ShrubberyCreationForm form("Home");
+        RobotomyRequestForm  form2("Home");
+        PresidentialPardonForm form3("Home");
+        bureaucrat1.signForm(form);
+        bureaucrat1.executeForm(form);
+        std::cout << std::endl;
+        bureaucrat1.signForm(form2);
+        bureaucrat1.executeForm(form2);
+        std::cout << std::endl;
+        bureaucrat1.signForm(form3);
+        bureaucrat1.executeForm(form3);
+        std::cout << std::endl;
     }
     catch(std::exception &e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }
+
+
+    Intern intern;
+    AForm *rrf;
+    AForm *rrf1;
+    rrf = intern.makeForm("Robotomy Request", "Bender");
+    if (rrf) 
+    {
+        Bureaucrat bureaucrat1("Ana", 2);
+    }
+    rrf1 = intern.makeForm("Robotomy Requesdt", "Bender");
+    if (rrf1) 
+    {
+        Bureaucrat bureaucrat1("Ana", 2);
+        
+    }
+    delete rrf1;
+    delete rrf;
 	return (0);
-
- 
-    std::cout << std::endl;
 }

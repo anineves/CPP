@@ -31,12 +31,13 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::executeFormAction() const
 {
-    std::cout << ".........Imagine some dilling noises......"<<std::endl;
+    std::cout << ".........Imagine some drilling noises......"<<std::endl;
 
     srand(time(NULL));
 
     int sucess = rand() %2;
-    try{
+    try
+    {
         if(sucess == 0)
             throw RobotomyRequestForm::RobotomizedFailException();
         std::cout << this->target << " has been robotomized" << std::endl;

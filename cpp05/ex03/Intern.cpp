@@ -13,7 +13,8 @@ Intern::Intern(const Intern &source)
     *this = source; 
 }
 
-Intern &Intern::operator=(const Intern &rhs) {
+Intern &Intern::operator=(const Intern &rhs) 
+{
     (void)rhs;
     return *this;
 }
@@ -23,20 +24,23 @@ Intern::~Intern()
 
 }
 
-AForm *Intern::PresidentialPardon(const std::string &target) {
+AForm *Intern::PresidentialPardon(const std::string &target) 
+{
     return new PresidentialPardonForm(target);
 }
 
-AForm *Intern::RobotomyRequest(const std::string &target) {
+AForm *Intern::RobotomyRequest(const std::string &target) 
+{
     return new RobotomyRequestForm(target);
 }
 
-AForm *Intern::ShrubberyCreation(const std::string &target) {
+AForm *Intern::ShrubberyCreation(const std::string &target) 
+{
     return new ShrubberyCreationForm(target);
 }
 
-AForm *Intern::makeForm(std::string &formName,
-                        std::string &formTarget) {
+AForm *Intern::makeForm(std::string formName, std::string formTarget) 
+{
 
     AForm *(Intern::*memberFuncs[])(const std::string &target) = {
         &Intern::PresidentialPardon, &Intern::RobotomyRequest, &Intern::ShrubberyCreation};
@@ -51,7 +55,6 @@ AForm *Intern::makeForm(std::string &formName,
             return ((this->*memberFuncs[i])(formTarget));
         }
     }
-
     std::cout << "Form passed as parameter doesn’t exist" << std::endl;
     return (NULL);
 }

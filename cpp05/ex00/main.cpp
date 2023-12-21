@@ -26,9 +26,9 @@ int	main()
     }
 	
     try{
-    Bureaucrat bureaucrat3("Sousa", 1);
-	bureaucrat3.increment();
-	std::cout << bureaucrat3;
+        Bureaucrat bureaucrat3("Sousa", 1);
+        bureaucrat3.increment();
+        std::cout << bureaucrat3;
     }
     catch(std::exception &e)
     {
@@ -36,9 +36,9 @@ int	main()
     }
 
     try{
-	Bureaucrat bureaucrat4("Neves", 150);
-	bureaucrat4.decrement();
-	std::cout << bureaucrat4;
+        Bureaucrat bureaucrat4("Neves", 150);
+        bureaucrat4.decrement();
+        std::cout << bureaucrat4;
     }
     catch(std::exception &e)
     {

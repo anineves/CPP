@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form() : name("default"), sign(false), gradeSign(0), gradeExec(0)
+Form::Form() : name("default"), sign(false), gradeSign(150), gradeExec(150)
 {
     throw Form::GradeTooHighException();
 }
@@ -9,7 +9,7 @@ Form::Form(const std::string &name, int gradeSign, int gradeExec) : name(name), 
 {
     if(gradeSign  < 1 || gradeExec < 1)
         throw Form::GradeTooHighException();
-    if(gradeExec > 150 || gradeExec > 150)
+    if(gradeSign > 150 || gradeExec > 150)
         throw Form::GradeTooLowException();
 }
 
