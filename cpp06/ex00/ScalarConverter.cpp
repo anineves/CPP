@@ -86,10 +86,9 @@ void ScalarConverter::convertToChar (const std::string &str)
         std::cout << "CHAR: impossible"<< std::endl;
         return;
     }
-    else if(!isdigit(str[0]))
+    else if(str.size() == 1 && !isdigit(str[0]))
     {
-        std::cout<<"CHAR: impossible"<<std::endl;
-        return ;
+        std::cout << "Char: " << static_cast<int>(str[0]) << std::endl;
     }
     else if (!std::isprint(toChar))
     {
