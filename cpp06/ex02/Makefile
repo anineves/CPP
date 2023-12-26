@@ -1,9 +1,9 @@
-NAME = serialize
+NAME = Base
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC = main.cpp\
-		Serializer.cpp
+		Base.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
