@@ -5,7 +5,8 @@
 #include <iostream>
 #include "math.h"
 
-class Point{
+class Point
+{
 	private:
 		Fixed const x;
 		Fixed const y;

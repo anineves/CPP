@@ -32,16 +32,19 @@ bool ScalarConverter::pseudoliteral(const std::string &str)
 
 void ScalarConverter::convertToFloat(const std::string &str)
 { 
-    if(str.size() == 1 && !isdigit(str[0]))
-    {
-        std::cout << "FLOAT: "<<  std::fixed << std::setprecision(1) << static_cast<float>(str[0])<<  "f" << std::endl;
-        return;
-    }
-
+  
     long double toFloat = std::strtold(str.c_str(), NULL);
-    if(toFloat <  -static_cast<float>(std::numeric_limits<float>::max()) || toFloat > static_cast<float>(std::numeric_limits<float>::max()))
+    if(toFloat <  -static_cast<float>(std::numeric_limits<float>::max()))
     {
-        std::cout<< "FLOAT: It is higher or lower than float max or min"<<std::endl;
+        std::cout<< "FLOAT: -inff"<<std::endl;
+    }
+    else if(toFloat > static_cast<float>(std::numeric_limits<float>::max()))
+    {
+        std::cout<< "FLOAT: inff"<<std::endl;
+    }
+    else if(!isdigit(str[0]))
+    {
+            std::cout<<"FLOAT: impossible"<<std::endl;
     }
     else
     {
@@ -52,17 +55,20 @@ void ScalarConverter::convertToFloat(const std::string &str)
 
 void ScalarConverter::convertToDouble(const std::string &str)
 {
-    if(str.size() == 1 && !isdigit(str[0]))
-    {
-        std::cout << "DOUBLE: " <<  std::fixed << std::setprecision(1) << static_cast<double>(str[0]) << std::endl;
-        return;
-    }
-
     long double toDouble = std::strtold(str.c_str(), NULL);
 
-    if(toDouble <  -static_cast<double>(std::numeric_limits<double>::max()) || toDouble > static_cast<double>(std::numeric_limits<double>::max()))
+    if(toDouble <  -static_cast<double>(std::numeric_limits<double>::max()))
     {
-        std::cout<< "DOUBLE: It is higher or lower than double max or min"<<std::endl;
+        std::cout<< "DOUBLE: -inf"<<std::endl;
+    }
+    else if (toDouble > static_cast<double>(std::numeric_limits<double>::max()))
+    {
+         std::cout<< "DOUBLE: inf"<<std::endl;
+    }
+    else if(!isdigit(str[0]))
+    {
+        std::cout<<"DOUBLE: impossible"<<std::endl;
+        return ;
     }
     else
     {
@@ -80,6 +86,11 @@ void ScalarConverter::convertToChar (const std::string &str)
         std::cout << "CHAR: impossible"<< std::endl;
         return;
     }
+    else if(!isdigit(str[0]))
+    {
+        std::cout<<"CHAR: impossible"<<std::endl;
+        return ;
+    }
     else if (!std::isprint(toChar))
     {
         std::cout << "CHAR: Non displayable"<< std::endl;
@@ -94,13 +105,13 @@ void ScalarConverter::convertToChar (const std::string &str)
 void ScalarConverter::convertToInt (const std::string &str)
 {
         long double toInt = std::strtold(str.c_str(), NULL);
-        if(str.size() == 1 && !isdigit(str[0]))
-        {
-            std::cout << "INT: " << static_cast<int>(str[0]) << std::endl;
-            return;
-        }
-
+    
         if(pseudoliteral(str))
+        {
+            std::cout<<"INT: impossible"<<std::endl;
+            return ;
+        }
+        if(!isdigit(str[0]))
         {
             std::cout<<"INT: impossible"<<std::endl;
             return ;

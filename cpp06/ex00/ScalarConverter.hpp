@@ -1,4 +1,4 @@
-#ifndef SCALACONVERTER_HPP
+#ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 #include <iomanip> 
 #include <iostream>
