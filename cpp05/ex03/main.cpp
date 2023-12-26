@@ -137,22 +137,25 @@ std::cout << "-----------------------No error-----------------------------------
         std::cerr << "Error: " << e.what() << std::endl;
     }
 
+    std::cout << "Intern Teste  " << std::endl;
 
     Intern intern;
-    AForm *rrf;
-    AForm *rrf1;
-    rrf = intern.makeForm("Robotomy Request", "Bender");
-    if (rrf) 
+    AForm *form;
+    AForm *form1;
+    form = intern.makeForm("Robotomy Request", "Bender");
+    if (form) 
     {
         Bureaucrat bureaucrat1("Ana", 2);
+        std::cout << bureaucrat1;
+        
     }
-    rrf1 = intern.makeForm("Robotomy Requesdt", "Bender");
-    if (rrf1) 
+    form1 = intern.makeForm("Robotomy Requesdt", "Bender");
+    if (form1) 
     {
         Bureaucrat bureaucrat1("Ana", 2);
         
     }
-    delete rrf1;
-    delete rrf;
+    delete form1;
+    delete form;
 	return (0);
 }

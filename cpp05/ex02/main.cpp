@@ -67,7 +67,7 @@ std::cout << "--------------------------ERROR Form------------------------------
     try
     {
         std::cout<< "teste 1" << std::endl;
-        Bureaucrat bureaucrat1("Ana", 100);
+        Bureaucrat bureaucrat1("Ana", 26);
         ShrubberyCreationForm form("Home");
         RobotomyRequestForm  form2("Home");
         PresidentialPardonForm form3("Home");
@@ -92,7 +92,7 @@ std::cout << "--------------------------ERROR Form------------------------------
         std::cout << std::endl;
         std::cout << std::endl;
         std::cout<< "teste 2" << std::endl;
-        Bureaucrat bureaucrat1("Ana", 4);
+        Bureaucrat bureaucrat1("Ana", 26);
         ShrubberyCreationForm form("Home");
         RobotomyRequestForm  form2("Home");
         PresidentialPardonForm form3("Home");

@@ -4,7 +4,8 @@ int	main()
 {
 
     std::cout << "--------------------------ERROR-----------------------------------------" <<std::endl;
-    try{
+    try
+    {
         Bureaucrat bureaucrat1("Ana", 0);
         std::cout << bureaucrat1 <<std::endl;
     }
@@ -14,7 +15,8 @@ int	main()
     }
     
 
-    try{
+    try
+    {
         Bureaucrat bureaucrat2("Isabel", 151);
         std::cout << bureaucrat2;
         std::
@@ -25,7 +27,8 @@ int	main()
         std::cerr << "Error: " << e.what() << std::endl;
     }
 	
-    try{
+    try
+    {
         Bureaucrat bureaucrat3("Sousa", 1);
         bureaucrat3.increment();
         std::cout << bureaucrat3;
@@ -35,7 +38,8 @@ int	main()
         std::cerr << "Error: " << e.what() << std::endl;
     }
 
-    try{
+    try
+    {
         Bureaucrat bureaucrat4("Neves", 150);
         bureaucrat4.decrement();
         std::cout << bureaucrat4;
@@ -48,7 +52,8 @@ int	main()
 
     std::cout << "-----------------------No error-------------------------------------------------" <<std::endl;
 
-    try{
+    try
+    {
         Bureaucrat bureaucrat1("Ana", 1);
         std::cout << bureaucrat1;
     }
@@ -58,7 +63,8 @@ int	main()
     }
     
 
-    try{
+    try
+    {
         Bureaucrat bureaucrat2("Isabel", 150);
         std::cout << bureaucrat2;
     }
@@ -67,7 +73,8 @@ int	main()
         std::cerr << "Error: " << e.what() << std::endl;
     }
 	
-    try{
+    try
+    {
         Bureaucrat bureaucrat3("Sousa", 3);
         bureaucrat3.increment();
         std::cout << bureaucrat3;
@@ -77,7 +84,8 @@ int	main()
         std::cerr << "Error: " << e.what() << std::endl;
     }
 
-    try{
+    try
+    {
         Bureaucrat bureaucrat4("Neves", 149);
         bureaucrat4.decrement();
         std::cout << bureaucrat4;

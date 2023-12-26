@@ -51,7 +51,7 @@ AForm *Intern::makeForm(std::string formName, std::string formTarget)
     {
         if (formName == formTypes[i]) 
         {
-            std::cout << "Create: " << formName << " form" << std::endl;
+            std::cout << "Intern creates " << formName << std::endl;
             return ((this->*memberFuncs[i])(formTarget));
         }
     }

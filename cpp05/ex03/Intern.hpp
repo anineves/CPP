@@ -12,7 +12,6 @@ class Intern
 {
     public:
         Intern();
-        Intern(const std::string &target);
         Intern( const Intern&source);
         Intern&operator= (const Intern&rhs);
         ~Intern();
