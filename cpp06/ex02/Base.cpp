@@ -52,7 +52,7 @@ void identify(Base &p)
 	std::cout << "\n  Identify Reference" << std::endl;
     try
 	{
-		(void)dynamic_cast<A&>(p);
+		dynamic_cast<A&>(p);
 		std::cout << "  A&" << std::endl;
 		return ;
 	}
@@ -63,7 +63,7 @@ void identify(Base &p)
 	
 	try
 	{
-		(void)dynamic_cast<B&>(p);
+		dynamic_cast<B&>(p);
 		std::cout << "  B&" << std::endl;
 		return ;
 	}
@@ -74,7 +74,7 @@ void identify(Base &p)
 	
 	try
 	{
-		(void)dynamic_cast<C&>(p);
+		dynamic_cast<C&>(p);
 		std::cout << "  C&" << std::endl;
 		return ;
 	}

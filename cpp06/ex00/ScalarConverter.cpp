@@ -42,9 +42,9 @@ void ScalarConverter::convertToFloat(const std::string &str)
     {
         std::cout<< "FLOAT: inff"<<std::endl;
     }
-    else if(!isdigit(str[0]))
+    else if(str.size() == 1 && !isdigit(str[0]))
     {
-            std::cout<<"FLOAT: impossible"<<std::endl;
+        std::cout << "FLOAT: " << std::fixed << std::setprecision(1) << static_cast<float>(str[0]) << "f"<< std::endl;
     }
     else
     {
@@ -65,10 +65,9 @@ void ScalarConverter::convertToDouble(const std::string &str)
     {
          std::cout<< "DOUBLE: inf"<<std::endl;
     }
-    else if(!isdigit(str[0]))
+    else if(str.size() == 1 && !isdigit(str[0]))
     {
-        std::cout<<"DOUBLE: impossible"<<std::endl;
-        return ;
+        std::cout << "DOUBLE: " << std::fixed << std::setprecision(1) << static_cast<double>(str[0]) << std::endl;
     }
     else
     {
@@ -88,7 +87,7 @@ void ScalarConverter::convertToChar (const std::string &str)
     }
     else if(str.size() == 1 && !isdigit(str[0]))
     {
-        std::cout << "Char: " << static_cast<int>(str[0]) << std::endl;
+        std::cout << "CHAR: '" << static_cast<char>(str[0])<< "'" << std::endl;
     }
     else if (!std::isprint(toChar))
     {
@@ -105,19 +104,14 @@ void ScalarConverter::convertToInt (const std::string &str)
 {
         long double toInt = std::strtold(str.c_str(), NULL);
     
-        if(pseudoliteral(str))
+        if(pseudoliteral(str) || toInt >std::numeric_limits<int>::max() || toInt < std::numeric_limits<int>::min())
         {
             std::cout<<"INT: impossible"<<std::endl;
             return ;
         }
-        if(!isdigit(str[0]))
+        else if(str.size() == 1 && !isdigit(str[0]))
         {
-            std::cout<<"INT: impossible"<<std::endl;
-            return ;
-        }
-        if(toInt >std::numeric_limits<int>::max() || toInt < std::numeric_limits<int>::min())
-        {
-            std::cout<<"INT: It is higher or lower than int max or min."<<std::endl;
+            std::cout << "INT: " << static_cast<int>(str[0]) << std::endl;
         }
         else
         {

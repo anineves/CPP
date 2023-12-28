@@ -7,11 +7,11 @@ int main()
 	uintptr_t	raw;
 
 	ptr = new Data;
-	ptr->value= 13;
+	ptr->value= 16;
 	
 	raw = Serializer::serialize (ptr);
 	new_ptr = Serializer::deserialize(raw);
-	std::cout << "Value of ptr: " << ptr->value << std::endl;
-	std::cout << "Value of new_ptr: " << new_ptr->value << std::endl;
+	std::cout << "Ptr: " << ptr->value << std::endl;
+	std::cout << "New_ptr: " << new_ptr->value << std::endl;
 	delete ptr;
 }
