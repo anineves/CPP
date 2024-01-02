@@ -8,10 +8,13 @@ int main()
 
 	ptr = new Data;
 	ptr->value= 16;
+	ptr->type = 'A';
 	
 	raw = Serializer::serialize (ptr);
 	new_ptr = Serializer::deserialize(raw);
-	std::cout << "Ptr: " << ptr->value << std::endl;
-	std::cout << "New_ptr: " << new_ptr->value << std::endl;
+	std::cout << "Ptr value: " << ptr->value << std::endl;
+	std::cout << "New_ptr value: " << new_ptr->value << std::endl;
+	std::cout << "Ptr type: " << ptr->type << std::endl;
+	std::cout << "New_ptr type: " << new_ptr->type << std::endl;
 	delete ptr;
 }

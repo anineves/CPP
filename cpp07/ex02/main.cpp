@@ -1,53 +1,63 @@
-#include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
 
-#define MAX_VAL 750
+
+#define SIZE 10
 int main(int, char**)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
+    Array<int> intArray(SIZE);
+    int* intArray2 = new int[SIZE - 5];
+
+    for (int i = 0; i < SIZE; i++)
     {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
+        intArray[i] = i * 2;
+        intArray2[i] = i * 3;
+        std::cout << "intArray[" << i << "] = " << intArray[i] << std::endl;
+        std::cout << "intArray2[" << i << "] = " << intArray2[i] << std::endl;
+        std::cout << std::endl;
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
+    std::cout << "----------------------------------------------------------------------" << std::endl;
     {
-        if (mirror[i] != numbers[i])
+        std::cout << "Operator =" << std::endl;
+        Array<int> arrayOp;
+        arrayOp = intArray;
+        for (int i = 0; i < SIZE; i++)
         {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
+            std::cout << "intArray[" << i << "] = " << intArray[i] << std::endl;
+            std::cout << "arrayOp[" << i << "]    = " << arrayOp[i] << std::endl;
         }
     }
+
+    std::cout << "----------------------------------------------------------------------" << std::endl;
+
     try
     {
-        numbers[-2] = 0;
+        Array<int> intArray3(-1);
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << std::endl;
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
+    try
     {
-        numbers[i] = rand();
+        intArray[-2] = 0;
     }
-    delete [] mirror;//
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what()  << std::endl;
+    }
+
+    try
+    {
+        intArray[13] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what()  << std::endl;
+    }
+
+
+    delete [] intArray2;
     return 0;
 }

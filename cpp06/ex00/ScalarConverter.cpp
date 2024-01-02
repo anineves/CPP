@@ -71,7 +71,7 @@ void ScalarConverter::convertToDouble(const std::string &str)
     }
     else
     {
-        std::cout << "DOUBLE: "<< std::fixed << std::setprecision(1)<< toDouble << std::endl;
+        std::cout << "DOUBLE: "<< std::fixed << std::setprecision(1)<< static_cast<double>(toDouble) << std::endl;
     }
 
 }

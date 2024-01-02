@@ -4,6 +4,7 @@
 typedef struct
 {
 	int		value;
+	char	type;
 } Data;
 
 
