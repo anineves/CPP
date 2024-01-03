@@ -3,6 +3,7 @@
 #include <iostream>
 #include <time.h>
 #include <stdlib.h> 
+
 template<typename T>
 class Array
 {
@@ -36,7 +37,7 @@ Array<T>::Array(): arr(new T[0]), len(0)
 template<typename T>
 Array<T>::Array(unsigned int n) : arr(new T[n]), len(n)
 {
-	if (n < 0)
+	if (n <= 0)
 		throw Array<T>::OutOfBoundsException();
 }
 
