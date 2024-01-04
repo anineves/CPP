@@ -2,20 +2,19 @@
 #define ITER_HPP
 #include <iostream>
 
-template<typename T>
-void	iter(T *array, int n, void (*f)(const T& array))
+template<typename T, typename N>
+void	iter(T *array, size_t n, void (*f)(N&))
 {
-	for (int i = 0; i < n; i++)
+	for (size_t i = 0; i < n; i++)
 	{
 		f(array[i]);
 	}
 }
 
 template<typename T>
-void print( T &x )
+void printt( T &x )
 {
   std::cout << x << std::endl;
-  return;
 }
 
 #endif
