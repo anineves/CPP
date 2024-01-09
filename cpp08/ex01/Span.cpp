@@ -57,24 +57,24 @@ void Span::addNumber2(const std::vector<int>::iterator& begin, const std::vector
 //begin() – Returns an iterator pointing to the first element in the vector
 
 //end() – Returns an iterator pointing to the theoretical element that follows the last element in the vector
-long int Span::shortestSpan()
+long Span::shortestSpan()
 {
-    long int diff = Span::longestSpan();
-	
     if (vect.size() <= 1)
 		throw Span::FewElements();
+	
+    std::vector<int>::iterator ptr;
+    std::vector<int> copy_vect(this->vect);
+    long  diff = Span::longestSpan();
 
-	for (std::vector<int>::iterator ptr = vect.begin(); ptr < vect.end(); ptr++)
-	{
-		for (std::vector<int>::iterator ptr1 = vect.begin(); ptr1 < vect.end(); ptr1++)
-		{
-			if (ptr == ptr1)
-				continue;
-			if (std::abs((long)*ptr - (long)*ptr1) < diff)
-					diff = std::abs((long)*ptr - (long)*ptr1);
-		}
-	}
-	return (diff);
+    std::sort(copy_vect.begin(), copy_vect.end());
+
+
+    for (ptr = copy_vect.begin(); ptr != copy_vect.end() - 1; ++ptr) {
+        if (abs((long)*(ptr + 1) - (long)*ptr) < diff && vect.size() > 2) {
+            diff = abs((long)*(ptr + 1) - (long)*ptr);
+        }
+    }
+    return diff;
 }
 
 

@@ -10,6 +10,7 @@ int main() {
         sp.addNumber(11);
         std::cout << sp.shortestSpan() << std::endl;
         std::cout << sp.longestSpan() << std::endl;
+        //sp.print();
     }
 
     std::cout << "\n\n--------------Exception FullSpan-------------" << std::endl;
@@ -72,8 +73,8 @@ int main() {
             for (int i = 0; i < 11000; i++)
                 sp.addNumber(i);
             //sp.print();
-            //std::cout << sp.shortestSpan() << std::endl;
-            //std::cout << sp.longestSpan() << std::endl;
+            std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp.longestSpan() << std::endl;
 
         } catch (const std::exception &e) {
             std::cerr << "Expection: " << e.what() << '\n';
@@ -110,6 +111,21 @@ int main() {
            Span sp(2);
 		sp.addNumber(2147483647);
 		sp.addNumber(-2147483648);
+		sp.print();
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan()<< std::endl;
+
+        } catch (const std::exception &e) {
+            std::cerr << "Expection: " << e.what() << '\n';
+        }
+    }
+
+     std::cout << "-----------00----------------" << std::endl;
+     {
+        try {
+           Span sp(2);
+		sp.addNumber(2147483);
+		sp.addNumber(-2147483);
 		sp.print();
 		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span: " << sp.longestSpan()<< std::endl;
