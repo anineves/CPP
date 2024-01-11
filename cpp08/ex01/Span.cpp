@@ -62,16 +62,16 @@ long Span::shortestSpan()
     if (vect.size() <= 1)
 		throw Span::FewElements();
 	
-    std::vector<int>::iterator ptr;
+    std::vector<int>::iterator it;
     std::vector<int> copy_vect(this->vect);
     long  diff = Span::longestSpan();
 
     std::sort(copy_vect.begin(), copy_vect.end());
 
 
-    for (ptr = copy_vect.begin(); ptr != copy_vect.end() - 1; ++ptr) {
-        if (abs((long)*(ptr + 1) - (long)*ptr) < diff && vect.size() > 2) {
-            diff = abs((long)*(ptr + 1) - (long)*ptr);
+    for (it = copy_vect.begin(); it != copy_vect.end() - 1; ++it) {
+        if (abs((long)*(it + 1) - (long)*it) < diff && vect.size() > 2) {
+            diff = abs((long)*(it + 1) - (long)*it);
         }
     }
     return diff;
