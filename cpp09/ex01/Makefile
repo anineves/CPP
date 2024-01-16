@@ -1,9 +1,9 @@
-NAME = span
+NAME = RPN
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC = main.cpp \
-		Span.cpp
+		RPN.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 

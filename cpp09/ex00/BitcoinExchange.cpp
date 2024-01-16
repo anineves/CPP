@@ -21,7 +21,9 @@ void BitcoinExchange::parseCsv()
 {
     std::ifstream file("data.csv");
     if (!file.good())
-        throw std::string("data.csv file could't open or don't exist");
+        throw std::runtime_error("data.csv file could't open or don't exist");
+    if (file.peek() == std::ifstream::traits_type::eof())
+        throw std::runtime_error("Data file is empty");
     else
     {
         std::string line;
@@ -34,8 +36,7 @@ void BitcoinExchange::parseCsv()
             date = line.substr(0, pos);
             std::string value;
             value = line.substr(pos + 1);
-            std::cout << "value " << value << std::endl;
-            if ((is_valid_date(date) && is_int(value) ) || is_float(value))
+            if (is_valid_date(date) && (is_int(value)  || is_float(value)))
             {
                 float valueBtc = strtof(value.c_str(), NULL);
                 this->data.insert(std::pair<std::string, float>(date, valueBtc));
@@ -78,7 +79,7 @@ bool BitcoinExchange::is_valid_date(std::string date)
     {
         return false;
     }
-    if ((month == 4 || month == 6 || month == 7 || month == 9 || month == 11) && day > 30)
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
         return false;
     if (month == 2)
     {
@@ -158,13 +159,15 @@ bool BitcoinExchange::is_float(std::string value)
     }
 
     long value_long = strtol(value.c_str(), NULL, 10);
-    if (value_long > FLT_MAX || value_long < FLT_MIN)
+    if ((value_long > FLT_MAX || value_long < FLT_MIN) && value_long !=0)
     {
         return false;
     }
-
     return true;
 }
+
+
+
 
 void BitcoinExchange::ft_print(const std::string &date, const float nbBtc) 
 {
@@ -174,9 +177,9 @@ void BitcoinExchange::ft_print(const std::string &date, const float nbBtc)
         it--;
 
     float value;
+
     value = nbBtc * it->second ;
-    
-    std::cout << it->first << " => " << nbBtc << " = "  << value << std::fixed << std::setprecision(1)<< std::endl;
+    std::cout << date << " => " << nbBtc << " = "  << value << std::endl;
 }
 
 bool BitcoinExchange::is_valid_value(float nbBtc)
@@ -201,23 +204,32 @@ void BitcoinExchange::parseArgv(const std::string input)
     std::string line;
     std::ifstream file(input.c_str());
     if (!file.good())
-        throw std::string("data.csv file could't open or don't exist");
+        throw std::runtime_error("input file could't open or don't exist");
 
     if (file.peek() == std::ifstream::traits_type::eof())
-        throw std::string("This file is empty");
+        throw std::runtime_error("This file is empty");
 
     getline(file, line);
     if (line != "date | value")
-        throw("Invalid file format");
+        throw std::runtime_error("Invalid file format");
     while (getline(file, line))
     {
+        if(line.size() == 0)
+        {
+            std::cerr << "Error: empty line." << std::endl;
+            continue;
+        }
         std::string date;
         int pos;
         pos = line.find('|');
+        if( pos != 11)
+        {
+            std::cerr << "Error: bad input =>"<< line << std::endl;
+            continue;
+            }
         date = line.substr(0, pos - 1);
         std::string value;
         value = line.substr(pos + 2);
-
         if (!is_valid_date(date)) 
         {
             std::cerr << "Error: bad input => " << line << std::endl;
@@ -227,7 +239,11 @@ void BitcoinExchange::parseArgv(const std::string input)
         nbBtc = strtof(value.c_str(), NULL);
         if(!is_valid_value(nbBtc))
             continue;
-        std::cout << "nbBtc " <<nbBtc << std::endl;
+        if(!is_int(value)  && !is_float(value))
+        {
+            std::cerr << "Error: bad input => " << line << std::endl;
+                continue;
+        }
         ft_print(date, nbBtc);
     }
 
