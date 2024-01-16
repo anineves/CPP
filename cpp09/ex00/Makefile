@@ -3,7 +3,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRC = main.cpp \
-		Span.cpp
+		BitcoinExchange.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
