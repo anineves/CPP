@@ -36,10 +36,14 @@ bool Rpn::validate_input(std::string input)
         if(!isdigit(input[i]) && !isOperator(input[i]) && input[i] != ' ')
             return false;
     }
-    if(input.size() < 2)
+    if(input.size() < 3)
         return false; 
     return true;
 }
+
+//push(value) adds the specified value to the top of the stack.
+//pop() removes the top element of the stack.
+
 void Rpn::operation (char op, std::stack<float> &stack)
 {
     if(stack.size() < 2)
@@ -72,6 +76,7 @@ void Rpn::operation (char op, std::stack<float> &stack)
 
 }
 
+//stack.top() returns a reference to the top element of the stack.
 float Rpn::solve (std::string input)
 {
     if (!validate_input(input))
