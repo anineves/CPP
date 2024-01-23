@@ -38,7 +38,9 @@ void BitcoinExchange::parseCsv()
             value = line.substr(pos + 1);
             if (is_valid_date(date) && (is_int(value)  || is_float(value)))
             {
-                float valueBtc = strtof(value.c_str(), NULL);
+                float valueBtc;
+                std::stringstream ss(value);
+                ss >> valueBtc;
                 this->data.insert(std::pair<std::string, float>(date, valueBtc));
             }
         }
@@ -75,7 +77,7 @@ bool BitcoinExchange::is_valid_date(std::string date)
     int month = atoi(date.substr(5, 2).c_str());
     int day = atoi(date.substr(8, 2).c_str());
 
-    if (year < 2009 || year > 2022 || month < 1 || month > 12 || day < 1 || day > 31)
+    if ((year == 2009 &&  month == 1 && day == 1) || year < 2009 || month < 1 || month > 12 || day < 1 || day > 31)
     {
         return false;
     }
@@ -179,7 +181,10 @@ void BitcoinExchange::ft_print(const std::string &date, const float nbBtc)
     float value;
 
     value = nbBtc * it->second ;
-    std::cout << date << " => " << nbBtc << " = "  << value << std::endl;
+
+    std::cout << date << " => " << nbBtc << " = " << value << std::endl;
+
+
 }
 
 bool BitcoinExchange::is_valid_value(float nbBtc)
@@ -222,11 +227,11 @@ void BitcoinExchange::parseArgv(const std::string input)
         std::string date;
         int pos;
         pos = line.find('|');
-        if( pos != 11)
+        if( pos != 11 || line.size() < 14)
         {
             std::cerr << "Error: bad input =>"<< line << std::endl;
             continue;
-            }
+        }
         date = line.substr(0, pos - 1);
         std::string value;
         value = line.substr(pos + 2);
@@ -244,6 +249,7 @@ void BitcoinExchange::parseArgv(const std::string input)
             std::cerr << "Error: bad input => " << line << std::endl;
                 continue;
         }
+
         ft_print(date, nbBtc);
     }
 
