@@ -5,6 +5,8 @@ int	checkDoubles(int nb, std::vector<int> &vect)
 {
 	for (std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)
 	{
+		if(nb == 0)
+			return 0;
 		if (nb == *it)
 			return 0;
 	}
@@ -38,7 +40,7 @@ int main (int argc, char **argv)
 	{
 		if (!checkDoubles(atoi(argv[i]), vect))
 		{
-			std::cerr << "Invalid args, There is duplicate numbers. " << std::endl;
+			std::cerr << "Invalid args, please try ./PmergeMe (val1> <val2> <val3> (...)" << std::endl;
 			return 1;
 		}
 		vect.push_back(atoi(argv[i]));

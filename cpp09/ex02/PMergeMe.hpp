@@ -4,32 +4,30 @@
 #include <iostream>
 #include <vector>
 #include <deque>
-#include <fstream>
-#include <string>
-#include <sstream> 
-#include <iterator>
-#include <stdlib.h>
-#include <ctime>
+#include <algorithm>
 #include <cmath>
-
-
+#include <ctime>
 
 class PMergeMe {
-  private:
+private:
     std::vector<int> vector;
-		std::deque<int> deque;
-  public:
+    std::deque<int> deque;
+
+public:
     PMergeMe();
     PMergeMe(std::vector<int> vector);
     PMergeMe(const PMergeMe &source);
-    PMergeMe& operator=(const PMergeMe &rhs);
+    PMergeMe &operator=(const PMergeMe &rhs);
     ~PMergeMe();
-  
 
-		void	sortVector(std::vector<int> &vec);
-		void	sortDeque(std::deque<int> &deque);
-		void	mergeVector(std::vector<int> &left, std::vector<int>&right, std::vector<int> &vector);
-		void	mergeDeque(std::deque<int> &left, std::deque<int>&right, std::deque<int> &deque);
+    std::vector<int> sortVector(std::vector<int> &vec);
+    std::deque<int> sortDeque(std::deque<int> &deq);
+    void recursiveSort(std::vector<std::pair<int, int> >& pairs, int n);
+    void recursiveSort(std::deque<std::pair<int, int> >& pair, int n);
+    std::vector<int> sequenceJacobsthal(std::vector<std::pair<int, int> > &pairs);
+    std::deque<int> sequenceJacobsthal(std::deque<std::pair<int, int> > &pairs);
+    std::vector<int> generateJacobsthal(int index);
+    std::deque<int>  generateJacobsthal2(int index);
 };
 
 #endif
